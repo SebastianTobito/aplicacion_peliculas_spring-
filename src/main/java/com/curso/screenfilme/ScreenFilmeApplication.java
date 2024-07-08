@@ -1,9 +1,6 @@
 package com.curso.screenfilme;
 
-import com.curso.screenfilme.model.DatosEpisodio;
-import com.curso.screenfilme.model.DatosSerie;
-import com.curso.screenfilme.service.ConsumoApi;
-import com.curso.screenfilme.service.ConvierteDatos;
+import com.curso.screenfilme.principal.Principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,15 +15,7 @@ public class ScreenFilmeApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		var consumoApi = new ConsumoApi();
-		var json = consumoApi.obtenerDatos("http://www.omdbapi.com/?t=dragon+ball&apikey=e212bfb");
-		//var json = consumoApi.obtenerDatos("https://coffee.alexflipnote.dev/random.json");
-		System.out.println(json);
-		ConvierteDatos conversor = new ConvierteDatos();
-		var datos = conversor.obtenerDatos(json, DatosSerie.class);
-		System.out.println(datos);
-		json = consumoApi.obtenerDatos("http://www.omdbapi.com/?t=dragon+ball&Season=1&episode=1&apikey=e212bfb");
-		var episodios = conversor.obtenerDatos(json, DatosEpisodio.class);
-		System.out.println(episodios);
+		Principal principal = new Principal();
+		principal.mostrarMenu();
 	}
 }
