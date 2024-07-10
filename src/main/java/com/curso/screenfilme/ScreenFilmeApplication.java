@@ -12,10 +12,11 @@ public class ScreenFilmeApplication implements CommandLineRunner {
 		SpringApplication.run(ScreenFilmeApplication.class, args);
 	}
 
-
 	@Override
 	public void run(String... args) throws Exception {
 		Principal principal = new Principal();
 		principal.mostrarMenu();
+//		EjemploStreams ejemploStreams = new EjemploStreams();
+//		ejemploStreams.muestraEjemplo();
 	}
 }
