@@ -1,6 +1,7 @@
 package com.curso.screenfilme.principal;
 
 import com.curso.screenfilme.model.*;
+import com.curso.screenfilme.repository.SerieRepository;
 import com.curso.screenfilme.service.ConsumoApi;
 import com.curso.screenfilme.service.ConvierteDatos;
 
@@ -16,6 +17,11 @@ public class Principal {
     private ConsumoApi consumoApi = new ConsumoApi();
     private ConvierteDatos conversor = new ConvierteDatos();
     private List<DatosSerie> datosSeries = new ArrayList<>();
+    private SerieRepository repositorio;
+
+    public Principal(SerieRepository repositorio) {
+        this.repositorio = repositorio;
+    }
 
     public void mostrarMenu() {
         var opcion = -1;
@@ -75,7 +81,9 @@ public class Principal {
 
     private void buscarSerieWeb(){
         DatosSerie datos = getDatosSerie();
-        datosSeries.add(datos);
+       Serie serie = new Serie(datos);
+       repositorio.save(serie);
+        // datosSeries.add(datos);
         System.out.println(datos);
     }
     private void mostrarSeriesBuscadas() {
