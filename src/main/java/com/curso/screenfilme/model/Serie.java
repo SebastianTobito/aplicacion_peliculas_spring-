@@ -9,7 +9,6 @@ import java.util.OptionalDouble;
 
 @Entity
 @Table(name = "series")
-
 public class Serie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +22,10 @@ public class Serie {
     private Categoria genero;
     private String actores;
     private String sinopsis;
-    @Transient
+    @OneToMany(mappedBy = "serie", cascade =  CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Episodio> episodios = new ArrayList<>();
-
+    public Serie() {
+    }
     public Serie(DatosSerie datosSerie){
         this.titulo = datosSerie.titulo();
         this.totalTemporadas =  datosSerie.totalTemporadas();
@@ -35,15 +35,19 @@ public class Serie {
         this.actores = datosSerie.actores();
         this.sinopsis = datosSerie.sinopsis();
     }
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
+    public List<Episodio> getEpisodios() {
+        return episodios;
+    }
+    public void setEpisodios(List<Episodio> episodios) {
+        episodios.forEach(e -> e.setSerie(this));
+        this.episodios = episodios;
+    }
     public String getSinopsis() {
         return sinopsis;
     }
@@ -100,14 +104,16 @@ public class Serie {
         this.titulo = titulo;
     }
 
+
     @Override
     public String toString() {
-        return  "genero= " + genero +
-                ", titulo='" + titulo + '\'' +
-                ", totalTemporadas=" + totalTemporadas +
-                ", evaluacion=" + evaluacion +
+        return  "titulo='" + titulo + '\'' +
+                ", totalTemporadas=" + totalTemporadas + '\'' +
+                ", evaluacion=" + evaluacion + '\'' +
+                ", genero= " + genero + '\'' +
                 ", poster='" + poster + '\'' +
                 ", actores='" + actores + '\'' +
-                ", sinopsis='" + sinopsis + '\'';
+                ", sinopsis='" + sinopsis + '\''+
+                ", episodios= " + episodios ;
     }
 }
