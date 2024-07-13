@@ -12,7 +12,7 @@ public class Episodio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     private Integer numeroTemporada;
-    private String titutlo;
+    private String titulo;
     private Integer numeroEpisodio;
     private Double evaluacion;
     private LocalDate fechaLanzamiento;
@@ -23,7 +23,7 @@ public class Episodio {
     }
     public Episodio(Integer numero, DatosEpisodio d) {
         this.numeroTemporada = numero;
-        this.titutlo = d.titulo();
+        this.titulo = d.titulo();
         this.numeroEpisodio = d.numeroEpisodio();
         try{
             this.evaluacion = Double.valueOf(d.evaluacion());
@@ -71,12 +71,12 @@ public class Episodio {
         this.numeroEpisodio = numeroEpisodio;
     }
 
-    public String getTitutlo() {
-        return titutlo;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setTitutlo(String titutlo) {
-        this.titutlo = titutlo;
+    public void setTituto(String titutlo) {
+        this.titulo = titutlo;
     }
 
     public Integer getNumeroTemporada() {
@@ -91,7 +91,7 @@ public class Episodio {
     public String toString() {
         return
                 "numeroTemporada=" + numeroTemporada +
-                        ", titutlo='" + titutlo + '\'' +
+                        ", titulo='" + titulo + '\'' +
                         ", numeroEpisodio=" + numeroEpisodio +
                         ", evaluacion=" + evaluacion +
                         ", fechaLanzamiento=" + fechaLanzamiento;

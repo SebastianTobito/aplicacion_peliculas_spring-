@@ -19,7 +19,5 @@ public class ScreenFilmeApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Principal principal = new Principal(repositorio);
 		principal.mostrarMenu();
-//		EjemploStreams ejemploStreams = new EjemploStreams();
-//		ejemploStreams.muestraEjemplo();
 	}
 }
