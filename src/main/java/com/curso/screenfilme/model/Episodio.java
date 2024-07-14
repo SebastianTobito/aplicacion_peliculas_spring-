@@ -18,8 +18,8 @@ public class Episodio {
     private LocalDate fechaLanzamiento;
     @ManyToOne
     private Serie serie;
-    public Episodio(){
 
+    public Episodio(){
     }
     public Episodio(Integer numero, DatosEpisodio d) {
         this.numeroTemporada = numero;
@@ -37,7 +37,6 @@ public class Episodio {
         }
 
     }
-
 
     public Serie getSerie() {
         return serie;
@@ -90,7 +89,7 @@ public class Episodio {
     @Override
     public String toString() {
         return
-                "numeroTemporada=" + numeroTemporada +
+                "Temporada=" + numeroTemporada +
                         ", titulo='" + titulo + '\'' +
                         ", numeroEpisodio=" + numeroEpisodio +
                         ", evaluacion=" + evaluacion +
